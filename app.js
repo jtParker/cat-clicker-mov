@@ -1,5 +1,6 @@
 var model = {
   selectedCat : null,
+  adminView : false,
 
   cats: [
     {
@@ -109,6 +110,13 @@ var catListView = {
 
       this.catListElem.appendChild(btn);
     }
+  }
+};
+
+var adminView = {
+
+  init : function() {
+
   }
 };
 
