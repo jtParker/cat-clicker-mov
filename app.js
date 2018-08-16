@@ -48,7 +48,7 @@ var octopus = {
     return model.selectedCat;
   },
 
-  setCurrentCat : function() {
+  setCurrentCat : function(cat) {
     model.selectedCat = cat;
   },
 
@@ -76,7 +76,7 @@ var catView = {
   render : function() {
     var currentCat = octopus.getCurrentCat();
     this.nameElem.innerHTML = currentCat.name;
-    this.clickElem.innerHTML = currentCat.clicks;
+    this.clickElem.innerHTML = currentCat.clickCount;
     this.imgElem.src = currentCat.image;
   }
 
@@ -97,11 +97,11 @@ var catListView = {
 
     for(var i = 0; i < cats.length; i++) {
       var cat = cats[i];
-      var btn = document.createElement('button');
+      var btn = document.createElement('li');
       btn.textContent = cat.name;
 
       btn.addEventListener('click', (function(catCopy) {
-          return function(catCopy) {
+          return function() {
             octopus.setCurrentCat(catCopy);
             catView.render();
           };
