@@ -61,8 +61,9 @@ var octopus = {
 
   setNewValues : function(name, img, clicks) {
     model.selectedCat.name = name;
-    model.selectedCat.img = img;
-    model.selectedCat.clicks = clicks;
+    model.selectedCat.image = img;
+    model.selectedCat.clickCount = clicks;
+    catView.render();
   }
 
 };
@@ -163,6 +164,7 @@ var adminView = {
       newClicks = document.getElementById('edit-clicks').value;
 
       octopus.setNewValues(newName, newImg, newClicks);
+      adminSec.classList.toggle('closed');
     });
   },
 };
