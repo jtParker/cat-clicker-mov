@@ -38,6 +38,7 @@ var octopus = {
 
     catView.init();
     catListView.init();
+    adminView.init();
 
   },
 
@@ -56,6 +57,12 @@ var octopus = {
   incrementCat : function() {
     model.selectedCat.clickCount++;
     catView.render();
+  },
+
+  setNewValues : function(name, img, clicks) {
+    model.selectedCat.name = name;
+    model.selectedCat.img = img;
+    model.selectedCat.clicks = clicks;
   }
 
 };
@@ -116,8 +123,48 @@ var catListView = {
 var adminView = {
 
   init : function() {
+    var newName, newImg, newClicks;
+    this.adminCont = document.getElementById('admin-cont');
+    this.adminBtn = document.getElementById('admin-btn');
+    this.cancelBtn = document.getElementById('cancel-btn');
+    this.saveBtn = document.getElementById('save-btn');
+    var adminSec = document.getElementById('admin-section');
 
-  }
+    // this.adminCont.addEventListener('click', function(e) {
+    //     target = e.target;
+    //
+    //     if (target === this.adminBtn) {
+    //       this.render();
+    //     }
+    //
+    //     if (target === this.cancelBtn) {
+    //       this.render();
+    //     }
+    //
+    //     if (target === this.saveBtn) {
+    //       newName = document.getElementById('edit-name').value;
+    //       newImg = document.getElementById('edit-img').value;
+    //       newClicks = document.getElementById('edit-clicks').value;
+    //
+    //       octopus.setNewValues(newName, newImg, newClicks);
+    //     }
+    // });
+    this.adminBtn.addEventListener('click', function() {
+      adminSec.classList.toggle('closed');
+    });
+
+    this.cancelBtn.addEventListener('click', function() {
+      adminSec.classList.toggle('closed');
+    });
+
+    this.saveBtn.addEventListener('click', function() {
+      newName = document.getElementById('edit-name').value;
+      newImg = document.getElementById('edit-img').value;
+      newClicks = document.getElementById('edit-clicks').value;
+
+      octopus.setNewValues(newName, newImg, newClicks);
+    });
+  },
 };
 
 octopus.init();
